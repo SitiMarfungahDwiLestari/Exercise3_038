@@ -129,7 +129,7 @@ namespace Exercise3_038
             if (LAST == null)
                 return;
             // delete the only node
-            if (LAST.next == next && next.rollNumber == x)
+            if (LAST.next == LAST && LAST.rollNumber == x)
             {
                 LAST = null;
                 return;
