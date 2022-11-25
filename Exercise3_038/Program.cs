@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise3_038
+namespace Exercise3_Linked_List_A
 {
-    class Program
+    class Node
     {
-        static void Main(string[] args)
-        {
-        }
+        public int rollNumber;
+        public string name;
+        public Node next;
     }
 }
