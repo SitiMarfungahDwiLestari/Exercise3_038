@@ -172,11 +172,12 @@ namespace Exercise3_038
                 Console.WriteLine("3. Insert in the beginning of the list");
                 Console.WriteLine("4. Insert in an empty list");
                 Console.WriteLine("5. Insert at end of the list");
-                Console.WriteLine("6. Exit");
-                Console.WriteLine("\nEnter your choice (1-6): ");
+                Console.WriteLine("6. Delete node");
+                Console.WriteLine("7. Exit");
+                Console.WriteLine("\nEnter your choice (1-7): ");
                 char ch = Convert.ToChar(Console.ReadLine());
 
-                if (ch == 6)
+                if (ch == 7)
                     break;
 
                 switch (ch)
@@ -229,6 +230,13 @@ namespace Exercise3_038
                             break;
                         }
                     case '6':
+                        {
+                            Console.WriteLine("Enter the element to be deleted : ");
+                            data = Convert.ToInt32(Console.ReadLine());
+                            obj.DeleteNode(data);
+                            break;
+                        }
+                    case '7':
                         return;
                     default:
                         {
