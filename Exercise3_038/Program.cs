@@ -103,6 +103,61 @@ namespace Exercise3_038
                 InsertAtEnd(data);
             }
         }
+        public void InsertAfter(int data, int x)
+        {
+            Node p = LAST.next;
+            do
+            {
+                if (p.rollNumber == x)
+                    break;
+                p = p.next;
+            } while (p != LAST.next);
+
+            if (p == LAST.next && p.rollNumber != x)
+                Console.WriteLine(x + " not present in the list.");
+            else
+            {
+                Node temp = new Node(data);
+                temp.next = p.next;
+                if (p == LAST)
+                    LAST = temp;
+            }
+        }
+        public void DeleteNode(int x)
+        {
+            // list is empty
+            if (LAST == null)
+                return;
+            // delete the only node
+            if (LAST.next == next && next.rollNumber == x)
+            {
+                LAST = null;
+                return;
+            }
+            // delete the first node
+            if (LAST.next.rollNumber == x)
+            {
+                LAST.next = LAST.next.next;
+                return;
+            }
+            // delete a node in between the list
+            Node p = LAST.next;
+            while (p.next != LAST.next)
+            {
+                if (p.next.rollNumber == x)
+                    break;
+                p = p.next;
+            }
+
+            if (p.next == LAST.next)
+                Console.WriteLine(x + " not found in the list.");
+            else
+            {
+                p.next = p.next.next;
+                if (LAST.rollNumber == x)
+                    LAST = p;
+            }
+        }
 
         static void Main (string[] args)
         {
