@@ -11,6 +11,12 @@ namespace Exercise3_038
         public int rollNumber;
         public string name;
         public Node next;
+
+        public Node(int i)
+        {
+            rollNumber = i;
+            next = null;
+        }
     }
     class CircularList
     {
@@ -55,26 +61,69 @@ namespace Exercise3_038
                 Console.Write(LAST.rollNumber + "  " + LAST.name + "\n");
             }
         }
-        public void firstNode()
+        public void InsertInBeginning(int data)
         {
-            if (listEmpty())
-                Console.WriteLine("\nList is empty");
-            else
-                Console.WriteLine("The first record in the list is : \n\n" + LAST.next.rollNumber + "  " + LAST.next.name);
-
+            Node temp = new Node(data);
+            temp.next = LAST.next;
+            LAST.next = temp;
         }
+
+        public void InsertInEmptyList(int data)
+        {
+            Node temp = new Node(data);
+            LAST = temp;
+            LAST.next = LAST;
+        }
+
+        public void InsertAtEnd(int data)
+        {
+            Node temp = new Node(data);
+            temp.next = LAST.next;
+            LAST.next = temp;
+            LAST = temp;
+        }
+
+        public void CreateList()
+        {
+            int i, n, data;
+
+            Console.WriteLine("Enter the number of nodes: ");
+            n = Convert.ToInt32(Console.ReadLine());
+
+            if (n == 0)
+                return;
+            Console.Write("Enter the element to be inserted: ");
+            data = Convert.ToInt32(Console.ReadLine());
+            InsertInEmptyList(data);
+
+            for (i = 2; i <= n; i++)
+            {
+                Console.Write("Enter the element to be inserted: ");
+                data = Convert.ToInt32(Console.ReadLine());
+                InsertAtEnd(data);
+            }
+        }
+
         static void Main (string[] args)
         {
+            int data;
             CircularList obj = new CircularList();
+            obj.CreateList();
             while (true)
             {
                 Console.WriteLine("\nMenu");
                 Console.WriteLine("1. View all the records in the list");
                 Console.WriteLine("2. Search for a record in the list");
-                Console.WriteLine("3. Display the first record int the list");
-                Console.WriteLine("4. Exit");
-                Console.WriteLine("\nEnter your choice (1-4): ");
+                Console.WriteLine("3. Insert in the beginning of the list");
+                Console.WriteLine("4. Insert in an empty list");
+                Console.WriteLine("5. Insert at end of the list");
+                Console.WriteLine("6. Exit");
+                Console.WriteLine("\nEnter your choice (1-6): ");
                 char ch = Convert.ToChar(Console.ReadLine());
+
+                if (ch == 6)
+                    break;
+
                 switch (ch)
                 {
                     case '1':
@@ -105,10 +154,26 @@ namespace Exercise3_038
                         break;
                     case '3':
                         {
-                            obj.firstNode();
+                            Console.WriteLine("Enter the element to be inserted : ");
+                            data = Convert.ToInt32(Console.ReadLine());
+                            obj.InsertInBeginning(data);
+                            break;
                         }
-                        break;
                     case '4':
+                        {
+                            Console.WriteLine("Enter the element to be insterted : ");
+                            data = Convert.ToInt32(Console.ReadLine());
+                            obj.InsertInEmptyList(data);
+                            break;
+                        }
+                    case '5':
+                        {
+                            Console.WriteLine("Enter the element to be inserted : ");
+                            data = Convert.ToInt32(Console.ReadLine());
+                            obj.InsertAtEnd(data);
+                            break;
+                        }
+                    case '6':
                         return;
                     default:
                         {
