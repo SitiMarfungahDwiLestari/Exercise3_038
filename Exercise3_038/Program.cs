@@ -125,22 +125,6 @@ namespace Exercise3_038
         }
         public void DeleteNode(int x)
         {
-            // list is empty
-            if (LAST == null)
-                return;
-            // delete the only node
-            if (LAST.next == LAST && LAST.rollNumber == x)
-            {
-                LAST = null;
-                return;
-            }
-            // delete the first node
-            if (LAST.next.rollNumber == x)
-            {
-                LAST.next = LAST.next.next;
-                return;
-            }
-            // delete a node in between the list
             Node p = LAST.next;
             while (p.next != LAST.next)
             {
